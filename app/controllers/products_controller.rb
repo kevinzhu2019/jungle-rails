@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
 
   def index
-    @products = Product.all.order(created_at: :desc)
+    @products = Product.all.order(created_at: :desc)# Use model Product to call DB
   end
 
   def show
