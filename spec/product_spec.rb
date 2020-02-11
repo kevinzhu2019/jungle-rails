@@ -12,8 +12,7 @@ RSpec.describe Product, type: :model do
       category = Category.new(:name => 'new_category1')
       product = Product.new(:name => nil, :description => 'some description', :image => 'image location', :price_cents => 1, :quantity => 1, :category_id => 2)
       expect(product).to_not be_valid
-      expect(product.errors.full_messages).to eq(
-        ["Name can't be blank"])
+      expect(product.errors.full_messages).to include("Name can't be blank")
     end
 
     it "price presence" do

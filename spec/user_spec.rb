@@ -7,7 +7,7 @@ RSpec.describe User, type: :model do
     end
 
     it "password and password confirmation fields should be identical to write to user table" do
-      user = User.new(:first_name => "c", :last_name => 'cc', :email => 'c@c.com', :password => 'cccccc', :password_confirmation => 'cccccc').save
+      user = User.new(:first_name => "j", :last_name => 'jj', :email => 'j@j.com', :password => 'cccccc', :password_confirmation => 'cccccc').save
       expect(user).to eq(true)
     end
     
@@ -19,6 +19,15 @@ RSpec.describe User, type: :model do
     it "password and password confirmation fields not identical prevent from saving to user table" do
       user = User.new(:first_name => "d", :last_name => 'dd', :email => 'd@d.com', :password => 'dddddd', :password_confirmation => 'aaaaaa').save
       expect(user).to eq(false)
+    end
+  end
+
+  describe 'email validation' do
+    it "is invalid if 2 emails are identical" do
+      user = User.new(:first_name => "k", :last_name => 'kk', :email => 'k@k.com', :password => 'eeeeee', :password_confirmation => 'eeeeee').save
+      expect(user).to eq(true)
+      user2 = User.new(:first_name => "l", :last_name => 'll', :email => 'K@K.com', :password => 'ffffff', :password_confirmation => 'ffffff').save
+      expect(user2).to eq(false)
     end
   end
 end
