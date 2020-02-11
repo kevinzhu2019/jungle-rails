@@ -30,4 +30,21 @@ RSpec.describe User, type: :model do
       expect(user2).to eq(false)
     end
   end
+
+  describe 'email, first name, last name should not be empty' do
+    it "is invalid if email is nil" do
+      user = User.new(:first_name => "m", :last_name => 'mm', :email => nil, :password => 'eeeeee', :password_confirmation => 'eeeeee')
+      expect(user).to_not be_valid
+    end
+
+    it "is invalid if first name is nil" do
+      user = User.new(:first_name => nil, :last_name => 'mm', :email => 'm@m.com', :password => 'eeeeee', :password_confirmation => 'eeeeee')
+      expect(user).to_not be_valid
+    end
+
+    it "is invalid if last name is nil" do
+      user = User.new(:first_name => 'firstName', :last_name => nil, :email => 'm@m.com', :password => 'eeeeee', :password_confirmation => 'eeeeee')
+      expect(user).to_not be_valid
+    end
+  end
 end
