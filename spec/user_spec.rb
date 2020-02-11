@@ -54,4 +54,22 @@ RSpec.describe User, type: :model do
       expect(user).to_not be_valid
     end
   end
+
+  describe '.authenticate_with_credentials' do
+    # examples for this class method here
+    it "is a valid user and login successfully" do
+      user = User.new(:first_name => 'o', :last_name => 'oo', :email => 'o@o.com', :password => 'oooooo', :password_confirmation => 'oooooo').save
+      expect(User.authenticate_with_credentials('o@o.com', 'oooooo')).to be_truthy
+    end
+
+    it "is an invalid login session with incorrect password" do
+      user = User.new(:first_name => 'p', :last_name => 'pp', :email => 'p@p.com', :password => 'pppppp', :password_confirmation => 'pppppp').save
+      expect(User.authenticate_with_credentials('p@p.com', 'pppp')).to be_falsy
+    end
+
+    it "is an invalid login session with incorrect email" do
+      user = User.new(:first_name => 'q', :last_name => 'qq', :email => 'q@q.com', :password => 'qqqqqq', :password_confirmation => 'qqqqqq').save
+      expect(User.authenticate_with_credentials('p@q.com', 'qqqqqq')).to be_falsy
+    end
+  end
 end

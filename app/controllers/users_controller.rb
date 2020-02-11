@@ -11,6 +11,12 @@ class UsersController < ApplicationController
     else
       redirect_to '/signup'
     end
+
+    # if user = User.authenticate_with_credentials(params[:email], params[:password])
+    #   redirect_to '/'
+    # else
+    #   redirect_to '/login'
+    # end
   end
 
   private
