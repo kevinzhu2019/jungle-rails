@@ -47,4 +47,11 @@ RSpec.describe User, type: :model do
       expect(user).to_not be_valid
     end
   end
+
+  describe 'password should be at least 6 digits' do
+    it "is invalid if password is less than 6 digits" do
+      user = User.new(:first_name => 'n', :last_name => 'nn', :email => 'n@n.com', :password => 'nnnnn', :password_confirmation => 'nnnnn')
+      expect(user).to_not be_valid
+    end
+  end
 end
