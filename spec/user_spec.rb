@@ -71,5 +71,15 @@ RSpec.describe User, type: :model do
       user = User.new(:first_name => 'q', :last_name => 'qq', :email => 'q@q.com', :password => 'qqqqqq', :password_confirmation => 'qqqqqq').save
       expect(User.authenticate_with_credentials('p@q.com', 'qqqqqq')).to be_falsy
     end
+
+    it "is an valid login session with email contains spaces" do
+      user = User.new(:first_name => 'r', :last_name => 'rr', :email => 'r@r.com', :password => 'rrrrrr', :password_confirmation => 'rrrrrr').save
+      expect(User.authenticate_with_credentials('  r@r.com   ', 'rrrrrr')).to be_truthy
+    end
+
+    it "is an valid login session with email contains both upper cases and lower cases" do
+      user = User.new(:first_name => 's', :last_name => 'ss', :email => 's@s.com', :password => 'ssssss', :password_confirmation => 'ssssss').save
+      expect(User.authenticate_with_credentials('S@s.com', 'ssssss')).to be_truthy
+    end
   end
 end
