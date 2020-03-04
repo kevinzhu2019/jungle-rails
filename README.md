@@ -27,4 +27,5 @@ More information in their docs: <https://stripe.com/docs/testing#cards>
 * Stripe
 
 ## Screenshots
+!["Screenshot of Jungle's main page"](https://github.com/kevinzhu2019/jungle-rails/blob/master/docs/jungle-rails1.png?raw=true)
 
