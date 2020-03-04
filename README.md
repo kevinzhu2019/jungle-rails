@@ -28,4 +28,4 @@ More information in their docs: <https://stripe.com/docs/testing#cards>
 
 ## Screenshots
 !["Screenshot of Jungle's main page"](https://github.com/kevinzhu2019/jungle-rails/blob/master/docs/jungle-rails1.png?raw=true)
-
+!["Screenshot of shopping cart page"](https://github.com/kevinzhu2019/jungle-rails/blob/master/docs/jungle-rails2.png?raw=true)
